@@ -106,15 +106,21 @@ Use exactly these categories. Do not create new ones.
 ### Allowed Tools
 - CSV files
 - Spreadsheets (Excel, Google Sheets, LibreOffice Calc)
+- SQL and PostgreSQL (see `docs/POSTGRES_SETUP.md`)
 - Simple scripts (Python with pandas, if you prefer)
 - Text editor
 - Calculator
 - AI tools (see guidelines below)
 
 ### Not Allowed
-- SQL or databases
-- Backend frameworks
+- Backend frameworks or applications
+- Production-grade infrastructure
 - Over-engineering
+
+**Important**: The tool you choose doesn't matter. What matters is:
+- Can you explain your categorization logic clearly?
+- Can you prove your totals reconcile?
+- Can you document ambiguous cases honestly?
 
 ### AI Usage Guidelines
 - AI tools (ChatGPT, Copilot, etc.) are allowed as thinking aids
@@ -142,6 +148,42 @@ The task is **complete** only when:
 
 ## Approach Suggestions
 
+You have multiple ways to complete this task. Choose what makes sense to you.
+
+### Option A: Spreadsheet-only
+1. Open `data/transactions.csv` in Excel/Google Sheets
+2. Add a new column called "category"
+3. Manually assign categories based on your rules (or use formulas)
+4. Use pivot tables or SUMIF/COUNTIF to create the recap
+5. Export recap to `recap.csv`
+
+**Good for**: Visual thinkers, those comfortable with Excel
+
+### Option B: Python Script
+1. Read `data/transactions.csv` with pandas
+2. Write if/else logic to assign categories
+3. Use `groupby` to create the recap
+4. Export to `recap.csv`
+
+**Good for**: Those who want to learn Python, automating repetitive logic
+
+### Option C: SQL Queries
+1. Load data into PostgreSQL (see `docs/POSTGRES_SETUP.md`)
+2. Write `CASE` statements to categorize transactions
+3. Use `GROUP BY` to create the recap
+4. Export results to `recap.csv`
+
+**Good for**: Learning SQL, expressing categorization as queries
+
+### Option D: Mixed Approach
+Use spreadsheets for exploration, then Python or SQL for generating the final recap. Or vice versa.
+
+**The tool doesn't matter. What matters is clear thinking and explanation.**
+
+---
+
+## Approach Details
+
 ### Step 1: Understand the Data (30–60 minutes)
 Open `data/transactions.csv` and answer:
 - What columns exist?
@@ -167,7 +209,10 @@ Go through each transaction and assign a category.
 Methods:
 - Manually in a spreadsheet
 - With a Python script
+- With SQL queries (see `docs/POSTGRES_SETUP.md` and `sql/02_recap.sql`)
 - Any approach that works for you
+
+**Hint**: If you choose SQL, the categorization logic goes in a `CASE` statement. If you choose spreadsheets, it goes in formulas or manual rules. The logic is the same, just expressed differently.
 
 ### Step 4: Create Recap (1–2 hours)
 Aggregate transactions by (month, user_id, category):
@@ -235,9 +280,11 @@ Be specific. "I don't know how to start" is too vague. "I can't figure out how t
 
 ## Next Steps
 
-After Task 01 is completed and reviewed, future tasks will introduce:
-- SQL as a query language
-- PostgreSQL for data storage
-- More complex reporting
+After completing Task 01, you'll have categorization logic documented in `MAPPING.md`.
 
-But not yet. Complete this task first.
+Whether you used CSV, spreadsheets, Python, or SQL — the logic is the same. You've learned:
+- How to think about categorizing real-world data
+- How to handle ambiguity
+- How to verify your work through reconciliation
+
+Future tasks will build on this foundation, exploring different ways to structure and query data at scale.

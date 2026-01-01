@@ -20,6 +20,12 @@ transaction-recap/
 ├── data/                          # Source datasets
 │   ├── README.md
 │   └── transactions.csv
+├── docs/                          # Documentation
+│   └── POSTGRES_SETUP.md          # SQL/PostgreSQL guide
+├── sql/                           # SQL examples
+│   ├── 01_explore.sql             # Exploration queries
+│   ├── 02_recap.sql               # Recap query template
+│   └── README.md
 └── submissions/                   # Work submissions
     └── shawn/
         ├── MAPPING.md             # Categorization rules
@@ -57,7 +63,7 @@ Read the full task description in [tasks/TASK_01_CATEGORIZE_AND_RECAP.md](tasks/
 
 **Summary**: Analyze transaction data, create categorization rules, and produce a monthly spending recap per user by category.
 
-**Constraint**: CSV-only. No SQL, no databases, no frameworks.
+**Approach**: Use any tool that helps you understand the data. The goal is clear thinking and explanation, not tool mastery.
 
 **Output**: Place all deliverables in `submissions/shawn/`
 
@@ -65,16 +71,17 @@ Read the full task description in [tasks/TASK_01_CATEGORIZE_AND_RECAP.md](tasks/
 
 ## Boundaries
 
-### Not Allowed (Yet)
-- SQL or databases
+### Not Allowed
 - Backend frameworks (Java, Spring Boot, etc.)
 - DevOps tooling (Docker, CI/CD, etc.)
+- Production-grade infrastructure
 - Over-engineering
 
 ### Allowed
-- CSV files
-- Spreadsheets (Excel, Google Sheets, etc.)
-- Simple scripts (Python, if needed)
+- CSV files and spreadsheets (Excel, Google Sheets, etc.)
+- SQL and PostgreSQL (see `docs/POSTGRES_SETUP.md`)
+- Simple scripts (Python, if helpful)
+- Any tool that helps you think clearly
 - AI tools (with accountability)
 
 ### Using AI
@@ -91,5 +98,19 @@ AI tools are allowed as thinking aids. However:
 - Explanation matters more than speed
 - Redo is normal, not a penalty
 - "I don't know" is acceptable; pretending is not
+- Tools are means, not ends — use what helps you think clearly
 
 Success means understanding how data represents reality, structuring thinking clearly, and being accountable for work quality.
+
+---
+
+## Using SQL (Optional)
+
+PostgreSQL is available in this Codespace for those who want to learn SQL.
+
+**To get started**:
+1. Read [docs/POSTGRES_SETUP.md](docs/POSTGRES_SETUP.md)
+2. Connect: `psql -U postgres -d transaction_recap`
+3. Load data and run example queries in `sql/`
+
+SQL is just another way to express categorization logic. Whether you use CSV, Python, or SQL — the thinking process is the same.
