@@ -1,0 +1,35 @@
+{
+  "name": "Transaction Recap Learning Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/postgres:1": {
+      "version": "latest",
+      "initdbArgs": "--encoding=UTF8 --locale=en_US.UTF-8"
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-vscode.vscode-postgres"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "forwardPorts": [5432],
+  
+  "remoteEnv": {
+    "PGHOST": "localhost",
+    "PGPORT": "5432",
+    "PGUSER": "postgres",
+    "PGPASSWORD": "postgres",
+    "PGDATABASE": "transaction_recap"
+  }
+}
